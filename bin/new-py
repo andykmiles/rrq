@@ -9,8 +9,8 @@ git clone git@github.com:andykmiles/py.git .
 mkdir -p src/$2
 mkdir tests
 mkdir docs
-mv {{proj}}.Dockerfile $2.Dockerfile
-mv {{proj}}dev.Dockerfile $2dev.Dockerfile
+mv bin/{{proj}}.Dockerfile bin/$2.Dockerfile
+mv bin/{{proj}}dev.Dockerfile bin/$2dev.Dockerfile
 git remote rm origin
 
 if [ $(hostname) = 'linuxdev' ]
@@ -20,28 +20,28 @@ then
     sed -i "s/{{proj}}/$2/g" ./bin/python
     sed -i "s/{{proj}}/$2/g" ./bin/terminal-dev
     sed -i "s/{{proj}}/$2/g" ./bin/terminal-prod
-    sed -i "s/{{proj}}/$2/g" ./bin/build-dev
+    sed -i "s/{{proj}}/$2/g" ./bin/build-runtimes
 
     sed -i "s/{{repo}}/$2/g" setup.py
     sed -i "s/{{repo}}/$2/g" ./bin/pytest
     sed -i "s/{{repo}}/$2/g" ./bin/python
     sed -i "s/{{repo}}/$2/g" ./bin/terminal-dev
     sed -i "s/{{repo}}/$2/g" ./bin/terminal-prod
-    sed -i "s/{{repo}}/$2/g" ./bin/build-dev
+    sed -i "s/{{repo}}/$2/g" ./bin/build-runtimes
 else
     sed -i "" "s/{{proj}}/$2/g" setup.py
     sed -i "" "s/{{proj}}/$2/g" ./bin/pytest
     sed -i "" "s/{{proj}}/$2/g" ./bin/python
     sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-dev
     sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-prod
-    sed -i "" "s/{{proj}}/$2/g" ./bin/build-dev
+    sed -i "" "s/{{proj}}/$2/g" ./bin/build-runtimes
 
     sed -i "" "s/{{repo}}/$2/g" setup.py
     sed -i "" "s/{{repo}}/$2/g" ./bin/pytest
     sed -i "" "s/{{repo}}/$2/g" ./bin/python
     sed -i "" "s/{{repo}}/$2/g" ./bin/terminal-dev
     sed -i "" "s/{{repo}}/$2/g" ./bin/terminal-prod
-    sed -i "" "s/{{repo}}/$2/g" ./bin/build-dev
+    sed -i "" "s/{{repo}}/$2/g" ./bin/build-runtimes
 fi
 
 ./bin/build-runtimes
