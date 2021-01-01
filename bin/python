@@ -1,0 +1,2 @@
+#!/bin/zsh
+docker run -it --rm --name {{proj}} -v $PWD:/home/andy/app -v /home/andy/data/{{repo}}/{{proj}}/prod:/home/andy/data -w /home/andy/app {{proj}} python -u $1

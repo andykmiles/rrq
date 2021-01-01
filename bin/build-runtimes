@@ -1,0 +1,5 @@
+#!/bin/zsh
+docker run --rm -i hadolint/hadolint < builds/{{proj}}.Dockerfile
+docker run --rm -i hadolint/hadolint < builds/{{proj}}dev.Dockerfile
+docker build -f builds/{{proj}}.Dockerfile -t {{proj}} --no-cache .
+docker build -f builds/{{proj}}dev.Dockerfile -t dev{{proj}} --no-cache .
