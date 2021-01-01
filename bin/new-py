@@ -50,3 +50,5 @@ fi
 git add . && git commit -m "init"
 gh repo create $1/$2 --public -y
 git push origin master
+git checkout -b develop
+git push origin develop
