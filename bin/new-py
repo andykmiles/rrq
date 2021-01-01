@@ -21,6 +21,7 @@ then
     sed -i "s/{{proj}}/$2/g" ./bin/terminal-dev
     sed -i "s/{{proj}}/$2/g" ./bin/terminal-prod
     sed -i "s/{{proj}}/$2/g" ./bin/build-runtimes
+    sed -i "s/{{proj}}/$2/g" ./builds/$2dev.Dockerfile
 
     sed -i "s/{{repo}}/$2/g" setup.py
     sed -i "s/{{repo}}/$2/g" ./bin/pytest
@@ -35,6 +36,7 @@ else
     sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-dev
     sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-prod
     sed -i "" "s/{{proj}}/$2/g" ./bin/build-runtimes
+    sed -i "" "s/{{proj}}/$2/g" ./builds/$2dev.Dockerfile
 
     sed -i "" "s/{{repo}}/$2/g" setup.py
     sed -i "" "s/{{repo}}/$2/g" ./bin/pytest
