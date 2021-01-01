@@ -1,3 +1,5 @@
 #!/bin/zsh
 docker run --rm -i hadolint/hadolint < builds/andykmilespy.Dockerfile
-docker build -f builds/andykmilespy.Dockerfile -t andykmilespy --no-cache .
+#docker build -f builds/andykmilespy.Dockerfile -t andykmilespy --no-cache .
+#docker build -f builds/andykmilespy.Dockerfile -t ghcr.io/andykmiles/py/py:latest --no-cache builds
+#docker push ghcr.io/andykmiles/py/py:latest
