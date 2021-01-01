@@ -1,0 +1,3 @@
+#!/bin/zsh
+docker run --rm -i hadolint/hadolint < builds/andykmilespy.Dockerfile
+docker build -f builds/andykmilespy.Dockerfile -t andykmilespy --no-cache .

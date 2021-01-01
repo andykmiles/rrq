@@ -1,0 +1,3 @@
+#!/bin/zsh
+docker rmc $(docker container -q) -f 
+docker rm $(docker ps -a -q) 

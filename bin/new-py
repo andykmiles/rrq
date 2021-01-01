@@ -1,0 +1,50 @@
+#!/bin/zsh
+# link to me from somewhere on your path
+mkdir -p ~/ws
+mkdir -p ~/data/$1/$2/prod
+mkdir -p ~/data/$1/$2/test
+cd ~/ws
+mkdir -p $1/$2 && cd $1/$2
+git clone git@github.com:andykmiles/py.git .
+mkdir -p src/$2
+mkdir tests
+mkdir docs
+mv {{proj}}.Dockerfile $2.Dockerfile
+mv {{proj}}dev.Dockerfile $2dev.Dockerfile
+git remote rm origin
+
+if [ $(hostname) = 'linuxdev' ]
+then
+    sed -i "s/{{proj}}/$2/g" setup.py
+    sed -i "s/{{proj}}/$2/g" ./bin/pytest
+    sed -i "s/{{proj}}/$2/g" ./bin/python
+    sed -i "s/{{proj}}/$2/g" ./bin/terminal-dev
+    sed -i "s/{{proj}}/$2/g" ./bin/terminal-prod
+    sed -i "s/{{proj}}/$2/g" ./bin/build-dev
+
+    sed -i "s/{{repo}}/$2/g" setup.py
+    sed -i "s/{{repo}}/$2/g" ./bin/pytest
+    sed -i "s/{{repo}}/$2/g" ./bin/python
+    sed -i "s/{{repo}}/$2/g" ./bin/terminal-dev
+    sed -i "s/{{repo}}/$2/g" ./bin/terminal-prod
+    sed -i "s/{{repo}}/$2/g" ./bin/build-dev
+else
+    sed -i "" "s/{{proj}}/$2/g" setup.py
+    sed -i "" "s/{{proj}}/$2/g" ./bin/pytest
+    sed -i "" "s/{{proj}}/$2/g" ./bin/python
+    sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-dev
+    sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-prod
+    sed -i "" "s/{{proj}}/$2/g" ./bin/build-dev
+
+    sed -i "" "s/{{repo}}/$2/g" setup.py
+    sed -i "" "s/{{repo}}/$2/g" ./bin/pytest
+    sed -i "" "s/{{repo}}/$2/g" ./bin/python
+    sed -i "" "s/{{repo}}/$2/g" ./bin/terminal-dev
+    sed -i "" "s/{{repo}}/$2/g" ./bin/terminal-prod
+    sed -i "" "s/{{repo}}/$2/g" ./bin/build-dev
+fi
+
+./bin/build-runtimes
+git add . && git commit -m "init"
+gh repo create $1/$2 --public -y
+git push origin master
