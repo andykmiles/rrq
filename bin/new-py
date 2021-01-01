@@ -9,8 +9,8 @@ git clone git@github.com:andykmiles/py.git .
 mkdir -p src/$2
 mkdir tests
 mkdir docs
-mv bin/{{proj}}.Dockerfile bin/$2.Dockerfile
-mv bin/{{proj}}dev.Dockerfile bin/$2dev.Dockerfile
+mv builds/{{proj}}.Dockerfile builds/$2.Dockerfile
+mv builds/{{proj}}dev.Dockerfile builds/$2dev.Dockerfile
 git remote rm origin
 
 if [ $(hostname) = 'linuxdev' ]
