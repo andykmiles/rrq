@@ -1,2 +1,5 @@
 #!/bin/zsh
-docker run -it --rm --name {{proj}}dev -v $PWD:/home/andy/app -v /home/andy/data/{{repo}}/{{proj}}/test:/home/andy/data -w /home/andy/app {{proj}} pytest -vv pytest -p no:cacheprovider -vv --cov src $1
+docker run -it --rm --name {{proj}}dev -v $PWD:/home/andy/app \
+          -v /home/andy/data/{{repo}}/{{proj}}/test:/home/andy/data \
+          -w /home/andy/app {{proj}}dev pytest -p no:cacheprovider \
+          -vv --cov src $1
