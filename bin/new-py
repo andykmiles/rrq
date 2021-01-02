@@ -13,7 +13,7 @@ mkdir tests
 mkdir docs
 mv builds/{{proj}}.Dockerfile builds/$2.Dockerfile
 mv builds/{{proj}}dev.Dockerfile builds/$2dev.Dockerfile
-mv builds/docker-publish.yml ~/.github/workflows/
+mv builds/docker-publish.yml .github/workflows/
 git remote rm origin
 
 if [ $(hostname) = 'linuxdev' ]
@@ -25,7 +25,7 @@ then
     sed -i "s/{{proj}}/$2/g" ./bin/terminal-prod
     sed -i "s/{{proj}}/$2/g" ./bin/build-runtimes
     sed -i "s/{{proj}}/$2/g" ./builds/$2dev.Dockerfile
-    sed -i "s/{{proj}}/$2/g" ./~/.github/workflows/docker-publish.yml
+    sed -i "s/{{proj}}/$2/g" ./.github/workflows/docker-publish.yml
 
     sed -i "s/{{repo}}/$2/g" setup.py
     sed -i "s/{{repo}}/$2/g" ./bin/pytest
@@ -41,7 +41,7 @@ else
     sed -i "" "s/{{proj}}/$2/g" ./bin/terminal-prod
     sed -i "" "s/{{proj}}/$2/g" ./bin/build-runtimes
     sed -i "" "s/{{proj}}/$2/g" ./builds/$2dev.Dockerfile
-    sed -i "" "s/{{proj}}/$2/g" ./~/.github/workflows/docker-publish.yml    
+    sed -i "" "s/{{proj}}/$2/g" ./.github/workflows/docker-publish.yml
 
     sed -i "" "s/{{repo}}/$2/g" setup.py
     sed -i "" "s/{{repo}}/$2/g" ./bin/pytest
