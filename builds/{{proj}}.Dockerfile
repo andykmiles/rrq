@@ -1,4 +1,4 @@
-FROM andykmilespy:latest
+FROM docker.pkg.github.com/andykmiles/py/basepy:latest
 RUN mkdir -p /home/andy/app \
     && mkdir -p /home/andy/app/src/{{proj}} \
     && mkdir -p /home/andy/app/tests \
