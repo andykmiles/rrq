@@ -1,6 +1,6 @@
 #!/bin/zsh
-docker run -it --rm --name {{proj}} \
+docker run -it --rm --name rrq \
         -v $PWD:/home/andy/app \
-        -v /home/andy/data/{{repo}}/{{proj}}/prod:/home/andy/data \
-        -w /home/andy/app {{proj}} \
+        -v /home/andy/data/rrq/rrq/prod:/home/andy/data \
+        -w /home/andy/app rrq \
         python -u $1

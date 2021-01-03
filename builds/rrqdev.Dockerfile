@@ -1,4 +1,4 @@
-FROM {{proj}}
+FROM rrq
 SHELL ["/bin/zsh", "-c", "-o", "pipefail"]
 USER root
 
